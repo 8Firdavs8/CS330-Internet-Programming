@@ -5,10 +5,22 @@
 var urlParams = new URLSearchParams(window.location.search);
 
 function greet() {
+    
 }
+console.log('Hello World');
 
 function isPrime(n) {
+    if (n >=2){
+        for (let i ==2; i < n; n++){
+            if (n%i == 0){
+                return false
+            } 
+        }
+    } else {
+        return false;
+    }
 }
+
 
 function printPrimeNumber() {
 }
@@ -23,4 +35,5 @@ window.onload = function() {
     greet();
     printPrimeNumber();
     printNPrimes();
+    document.getElementById('nPrimes').innerHTML = isPrime(4);
 };
