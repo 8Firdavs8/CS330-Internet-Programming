@@ -40,16 +40,6 @@ function printPrimeNumber() {
     }else {
         printElement.innerHTML = n + " is not a prime number";
     } 
-/*
-    if the string is not empty{
-        pass the number you got from user and print is its prime or not 
-    }
-    else the string is empty{
-        print if the default value 330 prime or not 
-    }
-    //printElement.innerHTML = urlParams.get("n");
-    
-*/
 }
 
 function getNPrimes(n) {
@@ -70,24 +60,21 @@ function printNPrimes() {
     const queryNumber = window.location.search;
     const urlParams = new URLSearchParams(queryNumber);
     let primeElement = document.querySelector("table");
-    primeElement.innerHTML = urlParams.get("n");
-    
+    //primeElement.innerHTML = urlParams.get("n");
+
     let n = urlParams.get("n");
-
-    let y = getNPrimes(n);
-    for (i in y){
-        primeElement.innerHTML = i;
-
-    }
+    let y = [getNPrimes(n)];
     
-
-
-
+    for (let i = 0; i<y.length; i++){
+        primeElement.innerHTML = y[i];
+       
+    }
 }
+
 
 window.onload = function() {
     this.greet();
-    printPrimeNumber();
-    printNPrimes();
+    this.printPrimeNumber();
+    this.printNPrimes();
 };
 
