@@ -19,3 +19,7 @@ Implement the following functionality:
     * <http://localhost:8000/primes.html>
 
 1. Submit code to your private repository.
+
+## Demonstration
+
+![Demo](primes.apng)
