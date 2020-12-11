@@ -1,6 +1,11 @@
 
 /* jshint esversion: 6 */
 /* jshint browser: true */
+/*
+Firdavs Atabaev
+CS330: Exercise#2
+Professor Yasinovskyy
+*/
 "use strict;";
 
 var team = ["Aardvark", "Beaver", "Cheetah", "Dolphin", "Elephant", "Flamingo", "Giraffe", "Hippo"];
