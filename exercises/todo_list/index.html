@@ -1,46 +1,68 @@
+
 <!DOCTYPE html>
 
 <head>
     <title>TODO list</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> 
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
 
 <body> 
     <div class="container">
+
         <h1>TODO List</h1>
-        <div class="container">
-            <form id="newTask">
-            <div>
-                <div>
-                    <label for="title">Task</label>
-                    <input id="title" required />
-                </div>
+        <div class="container" >
+            <form class = "needs-validation" id="newTask">
+              <div class="row">
+                  <div class = "col">
+                     <label for="title">Task</label>
+                     <input class="btn-dropdown-toggle form-control" placeholder="Write your task"id="title" required />
+                  </div>
 
-                <div>
-                    <label for="assignedTo">Assigned to</label>
-                    <select id="assignedTo"></select>
-                </div>
+                  <div class = "col">
+                     <label  for="assignedTo">Assigned to</label>
+                     <select class="btn-dropdown-toggle form-select"id="assignedTo">
+                       <!--  <option value="Ardvark">Ardvark</option>
+                         <option value="Beaver">Beaver</option>
+                         <option value="Cheetah">Cheetah</option>
+                         <option value="Dolphin">Dolphin</option>
+                         <option value="Elephant">Elephant</option>
+                         <option value="Flamingo">Flamingo</option>
+                         <option value="Giraffe">Giraffe</option>
+                         <option value="Hippo">Hippo</option>
+                        -->
+                     </select>
+                  </div>
 
-                <div>
-                    <label for="priority">Priority</label>
-                    <select id="priority"></select>
-                </div>
+                  <div class = "col">
+                     <label for="priority">Priority</label>
+                     <select class="btn-dropdown-toggle form-select" id="priority">
+                       <!-- <option value="Low">Low</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Important">Important</option>
+                        <option value="Critical">Critical</option>
+                        -->
+                     </select>
+                  </div>
 
-                <div>
-                    <label for="dueDate">Due date</label>
-                    <input id="dueDate" required />
-                </div>
-            </div>
-            <div>
-                <button type="button" id="addTaskBtn" onclick="addTask()">Add task</button>
-            </div>
-        </form>
-    </div>
+                  <div class = "col"> 
+                     <label for="dueDate">Due date</label>
+                     <input class ="form-control" type = "date"  data-provide="datepicker" id="dueDate" required />
+                  </div>
+                 </div>
+                 <div class = "d-grid gap-2">
+                  <button type="button" class = "btn btn-primary" id="addTaskBtn" onclick="addTask()">Add task</button>
+                 </div>
+            </form>
+        </div>
     </div>
 
     <div class="container">
-        <table id="taskList">
+        <table class = "table table-bordered" id="taskList">
             <thead>
                 <tr>
                     <th></th>
@@ -59,3 +81,4 @@
 </body>
 
 </html>
+
