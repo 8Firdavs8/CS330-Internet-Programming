@@ -30,6 +30,7 @@ function addRow(valueList, parent) {
     cb.type = "checkbox";
     cb.classList.add("checkbox");
     row.appendChild(cb);
+    
 
     for (let val of valueList) {
         let td = document.createElement("td");
@@ -39,39 +40,22 @@ function addRow(valueList, parent) {
 
 
     parent.appendChild(row);
+    cb.setAttribute("id", "check"); removeRow(row)
 };
 
-function removeRow() {
-    let myRow = addRow();
-    myRow.remove();
-    
 
-
+function removeRow(row) {
+    document.getElementById("check").onclick = function(){
+        if(this.checked){
+            document.getElementById("taskList").remove(row);
+        }
+    };
+    //inside addrow {cb.setAttribute("id", "check"); removeRow(row)};
+};
 
     // https://stackoverflow.com/questions/26512386/remove-current-row-tr-when-checkbox-is-checked
-};
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-/*(function () {
-   
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation');
-  
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms);
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          };
-  
-          form.classList.add('was-validated');
-        }, false);
-      });
-  })();
-  
-*/
+
+
 
 function populateSelect(selectId, sList) {
     let sel = document.getElementById(selectId, sList);
