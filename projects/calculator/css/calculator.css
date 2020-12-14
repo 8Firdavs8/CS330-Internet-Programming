@@ -1,0 +1,81 @@
+.container {
+  background-color: yellow;
+  padding: 20px;
+ 
+  
+}
+
+.calculator-screen {
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: right;
+  padding: 10px;
+  border: 1px white;
+}
+
+#btnClr{
+  width: 100%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border: 2px white;
+
+}
+#btnEql{
+  width: 100%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border: 2px white;
+
+}
+
+#first-column {
+  background-color: black;
+  color: red;
+  border:2px;
+}
+#second-column {
+  background-color: black;
+  color:red;
+  border:2px;
+}
+#third-column {
+  background-color: black;
+  color: white;
+  border:2px;
+}
+
+
+
+
+/*
+#btn1 {
+  width: 19.5%;
+
+}
+
+#btn2 {
+  width: 19.5%;
+
+}
+
+#btn3 {
+  width: 19.5%;
+
+}
+
+#btn4 {
+  width: 19.5%;
+  
+}
+
+#btn5 {
+  width: 19.5%;
+  
+}
+*/
+

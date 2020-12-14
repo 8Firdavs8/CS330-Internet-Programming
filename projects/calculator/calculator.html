@@ -1,31 +1,61 @@
 <!DOCTYPE html>
 <html>
 
+ <!-- 
+Firdavs Atabaev
+CS330: Project1
+Professor: Yasinovskyy
+  -->
+
 <head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="css/calculator.css" type="text/css">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="container">
-        <span id=result>&nbsp;</span>
-        <button id=btn0 onclick="enterDigit(0)">0</button>
-        <button id=btn1 onclick="enterDigit(1)">1</button>
-        <button id=btn2 onclick="enterDigit(2)">2</button>
-        <button id=btn3 onclick="enterDigit(3)">3</button>
-        <button id=btn4 onclick="enterDigit(4)">4</button>
-        <button id=btn5 onclick="enterDigit(5)">5</button>
-        <button id=btn6 onclick="enterDigit(6)">6</button>
-        <button id=btn7 onclick="enterDigit(7)">7</button>
-        <button id=btn8 onclick="enterDigit(8)">8</button>
-        <button id=btn9 onclick="enterDigit(9)">9</button>
-        <button id=btnSum onclick="enterOp('+')">+</button>
-        <button id=btnSub onclick="enterOp('-')">-</button>
-        <button id=btnMul onclick="enterOp('*')">*</button>
-        <button id=btnDiv onclick="enterOp('/')">/</button>
-        <button id=btnEql onclick="eval_expr()">=</button>
-        <button id=btnClr onclick="clear_screen()">C</button>
-        <button id=btnDiv onclick="enterDigit('.')">.</button>
+
+        <div class = "calculator-screen">
+            <span class = "calculator-screen" id=result>&nbsp;</span>
+        </div>
+
+        <div>
+            <button id=btnClr onclick="clear_screen()">C</button>
+        </div>
+
+        <div class="row align-items-start" id = "first-column"> 
+            <button class="col" id=btn1 onclick="enterDigit(1)">1</button>
+            <button class="col" id=btn2 onclick="enterDigit(2)">2</button>
+            <button class="col" id=btn3 onclick="enterDigit(3)">3</button>
+            <button class="col" id=btn4 onclick="enterDigit(4)">4</button>
+            <button class="col" id=btn5 onclick="enterDigit(5)">5</button>
+        </div>
+
+        <div class="row align-items-start" id = "second-column">
+            <button class="col"  id=btn6 onclick="enterDigit(6)">6</button>
+            <button class="col"  id=btn7 onclick="enterDigit(7)">7</button>
+            <button class="col"  id=btn8 onclick="enterDigit(8)">8</button>
+            <button class="col"  id=btn9 onclick="enterDigit(9)">9</button>
+            <button class="col"  id=btn0 onclick="enterDigit(0)">0</button>
+        </div>
+
+        <div class="row align-items-start" id = "third-column">
+            <button class="col"  id=btnSum onclick="enterOp('+')">+</button>
+            <button class="col"  id=btnSub onclick="enterOp('-')">-</button>
+            <button class="col"  id=btnMul onclick="enterOp('*')">*</button>
+            <button class="col"  id=btnDiv onclick="enterOp('/')">/</button>
+            <button class="col"  id=btnDiv onclick="enterDigit('.')">.</button>
+
+        </div>
+
+        <div>
+            <button id=btnEql onclick="eval_expr()">=</button>
+        </div>
+       
     </div>
 
     <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
