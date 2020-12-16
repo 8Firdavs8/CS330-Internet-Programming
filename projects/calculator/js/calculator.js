@@ -24,9 +24,6 @@ function enterDigit(digit) {
    
 };
 
-
-
-
 function clear_screen() {
     screen.innerHTML = '';
 };
