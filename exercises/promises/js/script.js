@@ -8,11 +8,11 @@ async function getData(url) {
     return fetch(url)
         .then(response => response.json())
         .catch(error => console.error(error));
-}
+};
 
 async function get_individual(num, all_numbers) {
 
-    let allTheNumbers =  document.querySelector('#number_info');
+    let allNumbers = document.querySelector('#number_info');
 
     for (let i = num - 1; i <= num + 1; i++) {
 
@@ -20,28 +20,30 @@ async function get_individual(num, all_numbers) {
 
         let infoPar = document.createElement("p");
         infoPar.classList.add("row");
+        infoPar.style.color = "red";
 
         let numberColumn = document.createElement("p");
         numberColumn.classList.add("col-3", "number-col");
         numberColumn.innerText = i;
         infoPar.appendChild(numberColumn);
+        numberColumn.style.color = "blue";
 
         let infoColumn = document.createElement("p");
         infoColumn.classList.add("col-9", "info-col");
         infoColumn.innerText = info["text"];
         infoPar.appendChild(infoColumn);
 
-        allTheNumbers.appendChild(infoPar);
-
+        allNumbers.appendChild(infoPar);
+;
     }
     
 
 
-}
+};
 
 async function get_batch(num, all_numbers) {
 
-    let allTheNumbers =  document.querySelector('#number_info');
+    let allNumbers =  document.querySelector('#number_info');
 
     let checkBox = await getData(`http://numbersapi.com/${num - 1}..${num + 1}?json`);
     
@@ -60,24 +62,24 @@ async function get_batch(num, all_numbers) {
         infoPar.appendChild(infoColumn);
 
         
-        allTheNumbers.appendChild(infoPar);
-    }
+        allNumbers.appendChild(infoPar);
+    };
 
 
-}
+};
 
 async function clickedon() {
     clear();
     let num = parseInt(document.querySelector('#number').value);
-    let allTheNumbers = document.querySelector('#number_info');
+    let allNumbers = document.querySelector('#number_info');
     if (document.querySelector('#batch').checked) {
-        await get_batch(num, allTheNumbers);
+        await get_batch(num, allNumbers);
     } else {
-        await get_individual(num, allTheNumbers);
-    }
-}
+        await get_individual(num, allNumbers);
+    };
+};
 
 function clear() {
-    let allTheNumbers = document.querySelector('#number_info');
-    allTheNumbers.innerHTML = "";
-}
+    let allNumbers = document.querySelector('#number_info');
+    allNumbers.innerHTML = "";
+};
