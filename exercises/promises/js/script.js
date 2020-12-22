@@ -18,17 +18,17 @@ async function get_individual(num, all_numbers) {
 
         let info = await getData(`http://numbersapi.com/${i}?json`);
 
-        let infoPar = document.createElement("p");
+        let infoPar = document.createElement("div");
         infoPar.classList.add("row");
         infoPar.style.color = "red";
 
-        let numberColumn = document.createElement("p");
+        let numberColumn = document.createElement("div");
         numberColumn.classList.add("col-3", "number-col");
         numberColumn.innerText = i;
         infoPar.appendChild(numberColumn);
         numberColumn.style.color = "blue";
 
-        let infoColumn = document.createElement("p");
+        let infoColumn = document.createElement("div");
         infoColumn.classList.add("col-9", "info-col");
         infoColumn.innerText = info["text"];
         infoPar.appendChild(infoColumn);
@@ -48,15 +48,15 @@ async function get_batch(num, all_numbers) {
     let checkBox = await getData(`http://numbersapi.com/${num - 1}..${num + 1}?json`);
     
     for (let i = num - 1; i <= num + 1; i++) {
-        let infoPar = document.createElement("p");
+        let infoPar = document.createElement("div");
         infoPar.classList.add("row")
 
-        let numbersColumn = document.createElement("p");
+        let numbersColumn = document.createElement("div");
         numbersColumn .classList.add("col-3", "number-col");
         numbersColumn .innerText = i;
         infoPar.appendChild(numbersColumn);
 
-        let infoColumn = document.createElement("p");
+        let infoColumn = document.createElement("div");
         infoColumn.classList.add("col-9", "info-col");
         infoColumn.innerHTML = checkBox[i];
         infoPar.appendChild(infoColumn);
@@ -79,7 +79,9 @@ async function clickedon() {
     };
 };
 
+
 function clear() {
     let allNumbers = document.querySelector('#number_info');
     allNumbers.innerHTML = "";
 };
+
