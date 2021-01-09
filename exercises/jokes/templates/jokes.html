@@ -1,23 +1,9 @@
 {% extends "base.html" %}
-{% block content %}
-<!-- TODO: Add jokes here -->
-<br>
-<div class="row">
-    <div class="alert alert-light">
-        Language: {{ joke['language'] }}
-    </div>
-    <div class="alert alert-light">
-        Category: {{ joke['category'] }}
-    </div>
-</div>
+{% block output %}
+<!-- <div class="alert alert-secondary">{{ jokes }}</div> -->
 
-{% if error %}
-<div class="alert alert-danger">{{ joke['content'] }}</div>
-{% else %}
-<div class="alert alert-primary">{{ joke['content'] }}</div>
-{% endif %}
+{% for joke in ListOfjokes %}
+    <div class="alert alert-secondary">{{ joke }}</div>
+{% endfor %}
 
-<form action="/" method="GET">
-    <button type="submit"  class="btn btn-primary">Back</button>
-</form>
 {% endblock %}
