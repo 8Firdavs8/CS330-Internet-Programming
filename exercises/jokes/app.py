@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Flask application to use `pyjokes`"""
+"""Flask application to use pyjokes"""
 
 import random
 from typing import List
@@ -13,41 +13,36 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-   language = request.args.get("language")
-   category = request.args.get("category")    
-   if language and category:
-
-       error = None
-       try:
-
-           joke_dict = get_joke_dict(language=language, category=category)
-       except (pyjokes.pyjokes.LanguageNotFoundError\
-           ,pyjokes.pyjokes.CategoryNotFoundError):
-           joke_dict = invalid_combination_error(language=language, category=category)
-           error=True
-       return render_template("jokes.html", joke=joke_dict, error=error)
-   else:
     return render_template("base.html")
-  
+
 @app.route("/", methods=["POST"])
-def index_jokes(language, category):
-    content = pyjokes.get_joke(language, category)
-    
-    joke_dict = {
-        "category" : category,
-        "language" : language,
-       
-        "content" : content
-    }
+def index_jokes():
 
-    return joke_dict 
+    language = request.form.get("selLang")
+    category = request.form.get("selCat")
+    number = 1
+    try:
+        number = int(request.form.get("selNumber"))
+    except:
+        pass
 
-def send_joke(language, category):
+    jokes = send_joke(language=language, category=category, number=number)
+    return render_template("jokes.html", jokes=jokes)
 
-    error_dict = {
-    "category" : category,
-    "language"  : language,
-    "content" : "Invalid Combination. Select another combination and try again"
-    }
 
-    return error_dict
+def send_joke(language: str = "en", category: str = "all", number: int = 1) -> List[str]:
+
+    jokes = []
+
+    for i in range(number):
+        try:
+            content = pyjokes.get_joke(language, category)
+            jokes.append(content)
+        except (pyjokes.pyjokes.LanguageNotFoundError\
+            ,pyjokes.pyjokes.CategoryNotFoundError):
+            return ["No kidding!"]
+
+    return jokes
+
+def invalid_combination_error(language: str, category: str) -> str:
+    return "That language/category combination is invalid"
