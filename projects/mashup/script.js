@@ -2,30 +2,46 @@
 /* jshint node: true */
 /* jshint browser: true */
 /* jshint jquery: true */
+
+
+
+
+// CS330-Internet Programming
+// MidTerm Project: Mashup: CoviLocWeather Application
+// CM Nafi and Firdavs Atabaev
+// Professor Yasinovskyy
+
+
+
+
+
 'use strict';
 
-// Greetings
+// Greetings 
 var today = new Date();
 var hourNow = today.getHours();
 var greeting;
 
-if (hourNow > 18) {
-    greeting = 'Good evening!';
-} else if (hourNow > 12) {
-    greeting = 'Good afternoon!';
+if (hourNow > 20) {
+    greeting = 'Good evening, Welcome to our CoviLocWeather application!';
+} else if (hourNow > 11) {
+    greeting = 'Good afternoon, Welcome to our CoviLocWeather application!';
 } else if (hourNow > 0) {
-    greeting = 'Good morning!';
+    greeting = 'Good morning Welcome to our CoviLocWeather application!';
 } else {
-    greeting = 'Welcome!';
+    greeting = 'Welcome to our CoviLocWeather application!';
 }
 document.getElementById("greeting").innerHTML = greeting;
 
+// Fetch the Data
 async function getData(url) {
     return fetch(url)
     .then(response => response.json())
     .catch(error => console.log(error));
 }
 
+
+// Getting started with the Weather and the Location Information section of the project
 async function getInfo() {
 
     let vals = JSON.parse(localStorage.getItem('post1'));
@@ -41,19 +57,19 @@ async function getInfo() {
         city.innerHTML = name
         row.appendChild(city);
         menu.appendChild(row);
-
+        
         let temp2 = document.createElement("td");
         var weather = myDictionary["temperature"];
         temp2.innerHTML = weather;
         row.appendChild(temp2);
         menu.appendChild(row);
-
+      
         let descr2 = document.createElement("td");
         var title = myDictionary["weather"];
         descr2.innerHTML = title;
         row.appendChild(descr2);
         menu.appendChild(row);
-
+        
         var y = document.createElement("IMG");
         var icon2 = myDictionary["x"];
         y.setAttribute("src", icon2);
@@ -70,6 +86,9 @@ async function getInfo() {
     // Assigning my own APIKEY to a String
     // Source: https://openweathermap.org/api
     var api = "545fa6e4eff879afca0b6f2bb8947667";
+
+    // Merging the apis together based on the selected city from the Covid Info section of the Project
+    // This takes the selected city name and passes it to map api and weather api
     let cityName = document.getElementById("exampleFormControlSelect1").value;
     
     if (cityName != ""){
@@ -159,51 +178,34 @@ async function getInfo() {
 
 
 
-// Started Covid Cases for the individual cases in the cities of the World!
+// Started Covid Cases in the world part of the porject!
 
-
+// Created a variable for the api of the Covid Cases
 
 let covidData = 'https://www.trackcorona.live/api/cities';
 async function getCovidData(covidData) {
     const response = await fetch(covidData);
     const cityCovid = await response.json();
     const cleanData = cityCovid.data;
-    
-    //console.log();
-
     let readyInput = document.getElementById("clickFor").addEventListener("click", function(){
         selectName();
     });
-
- 
-    
-
-    //console.log(document.getElementByTagName("option"));
-   
+//    Show the information of the selected cities/counties information on the table
     function showCovidCases(cityData){
-        // for (let i=0; i<cleanData.length; i++){
-
-        //     const iteratedArray = cleanData[i].location;
-        //     //console.log(iteratedArray);
-            
-        //     if (iteratedArray.includes(name1)) {
-        //         console.log(name1);
-
+       
                 document.getElementById("location").textContent = cityData.location;
                 document.getElementById("totalConfirmed").textContent = cityData.confirmed || 0;
                 document.getElementById("totalDead").textContent = cityData.dead || 0;
                 document.getElementById("updated").textContent = cityData.updated;
-            // }  
-        //  }
     }
-
+// Getting the city names from the api indexes
     async function getCityData(city) {
         const cityURL = covidData + "/" + city;
         const dataResponse = await fetch(cityURL);
         const cityData = await dataResponse.json();
         return cityData.data[0];
     }
-
+// Populating the drop down menu with the options for the names of the city
     function listOfCities(){
         for (let i=0; i<cleanData.length; i++){
 
@@ -220,24 +222,17 @@ async function getCovidData(covidData) {
     // Select location and pass it to the table:
     async function selectName(){
         let e = document.getElementById("exampleFormControlSelect1");
-        let strUser = e.value; //options[e.selectedIndex].textContent;
+        let strUser = e.value;
         console.log(strUser);
         const cityData = await getCityData(strUser);
         showCovidCases(cityData);
 
     }
-
-    
-    
-    // Calling all the Functions:
-    //getName(name);
-    // showCovidCases();
+   
     listOfCities();
-    await selectName();
-    //selectName();
+    await selectName();    
 
 }
-
 
 window.onload = function() {
     getCovidData(covidData);
