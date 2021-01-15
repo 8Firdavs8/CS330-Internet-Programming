@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div id="container">
+    <div class="alert alert-info">
+        Pick a Continent
+    </div>
+
+    <form action="/" method="POST">
+        <div class="row">
+            <div class="col">\
+                <div class = "form-group"> 
+                <select class="form-control form-control-lg " name="continent">
+                    {% for opt in options %}
+                    <option value="{{opt[0]}}">{{opt[0]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+            <div class="col">
+                <input type="submit" class="btn btn-secondary" value="Get info!">
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
