@@ -4,14 +4,12 @@ jokes api
 """
 
 import random
-from typing import List
-
 import pyjokes
-
 import json
+from typing import List
 from flask import Flask, Response, jsonify, render_template, request
-# from flask_cors import CORS, cross_origin
 from faker import Faker
+
 
 app = Flask(__name__)
 
