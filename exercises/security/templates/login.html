@@ -1,5 +1,23 @@
 {% extends "base.html" %}
-
 {% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
+
+
+
+<div class="container">
+    <h1 class="alert alert-danger" >You are not logged in, Please click the buttons below to login!</h1>
+    <form action="/login" method="POST">
+        <div class="col">
+            <div class="row">
+                <input type="submit" class="btn btn-primary" name="username" value="Alice">
+            </div>
+            <div class = "row">
+                <input type="submit" class="btn btn-secondary" name="username" value="Bob">
+            </div>
+
+        </div>
+        
+    </form>
+</div>
 {% endblock %}
