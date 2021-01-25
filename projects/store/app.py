@@ -4,6 +4,9 @@ import csv
 import os
 import pandas as pd
 
+app.secret_key = os.environ.get("SECRET_KEY")
+port = int(os.environ.get("PORT","5000"))
+
 app = Flask(__name__)
 
 def read_txt(filename):
@@ -74,3 +77,6 @@ def removeFromList():
         except FileNotFoundError:
                 cant = "You Can't Remove from an Empty table"
                 return render_template("base.html", myMessage=cant)
+
+if __name__ == "__main__":
+    app.run("0.0.0.0",port)
