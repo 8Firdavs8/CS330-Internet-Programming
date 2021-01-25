@@ -10,8 +10,8 @@ def read_txt(filename):
     """File format: name category number"""
     myList = []
     with open(filename, "r") as data:
-        for line in data:
-            myList.append(tuple(line.strip().split(", ")))
+        for row in data:
+            myList.append(tuple(row.strip().split(", ")))
     return myList[1:]
 
 @app.route("/")
@@ -23,10 +23,10 @@ def index():
 def add():
     name = request.args.get("name")
     category = request.args.get("category")
-    number = request.args.get("number")
+    price = request.args.get("number")
 
-    if name and category and number:
-        sum = str(name) + "," + str(category) +  "," + str(number)
+    if name and category and price:
+        sum = str(name) + "," + str(category) +  "," + str(price)
         appendFile = open('roster.csv', 'a')
         appendFile.write(sum)
         appendFile.write('\n')
@@ -35,10 +35,10 @@ def add():
             conn.execute(f"drop table if exists roster")
             data = pd.read_csv(f"roster.csv", header=None)
             data.to_sql(f"roster", conn)   
-            cur = conn.cursor()
-            cur.execute(f"select * from roster")
+            adding = conn.cursor()
+            adding.execute(f"select * from roster")
             emptyList = []
-            for name in cur:
+            for name in adding:
                 name = name[1:]
                 emptyList.append(name)
             return render_template("add.html", name=emptyList)  
@@ -48,11 +48,11 @@ def add():
 @app.route("/list")
 def listOfThings():
         with sqlite3.connect(f"roster.db") as conn:
-                cur = conn.cursor()
-                cur.execute(f"select * from roster")
-                if cur:
+                adding = conn.cursor()
+                adding.execute(f"select * from roster")
+                if adding:
                         emptyList = []
-                        for name in cur:
+                        for name in adding:
                                 name = name[1:]
                                 emptyList.append(name)
                         if len(emptyList) == 0:
@@ -65,8 +65,8 @@ def listOfThings():
 def removeFromList():
         try:
                 with sqlite3.connect(f"roster.db") as conn:
-                        cur = conn.cursor()
-                        cur.execute(f"delete from roster")
+                        adding = conn.cursor()
+                        adding.execute(f"delete from roster")
                        
                         os.remove("roster.csv") 
                         message = "Successfully removed all the items from DB, Please Check Costumer"
