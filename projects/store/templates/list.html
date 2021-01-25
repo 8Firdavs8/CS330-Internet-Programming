@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>
+    Available items in the Store
+</p>
+
+<table id="roster" class="table">
+        <thead>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+        </thead>
+        <tbody>
+            {% for s in a %}
+            <tr>
+                <td>{{ s[0] }}</td>
+                <td>{{ s[1] }}</td>
+                <td>{{ s[2] }}</td>
+            
+            </tr>
+            {% endfor %}
+        </tbody> 
+    </table>  
+<p>
+    {{ removed }}
+</p> 
+
+{% endblock %}
