@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    
+    
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js"></script>
+</head>
+
+<h1 id = "header">Today's Inspiration</h1>
+
+<div>
+    Example Quote:
+
+    <p id="example-quote"></p>
+
+</div>
+<style>
+    body {
+        align-items: center;
+    }
+        h {
+            font-size: 200%;
+            font-weight: bold;
+            padding-top: 30px;
+        }
+    </style>
+</br>
+    <form method="GET">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>MyQuote</label>
+                        <input type="textfield" class="form-control" name="name" required />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Quote Category</label>
+                        <select class="form-control" name="category">
+                            <option value="Funny">Funny</option>
+                            <option value="Inspiring">Inspiring</option>
+                            <option value="Sad">Sad</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" class="form-control" name="number" min="1" max="50" required />
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                        <div class="form-group">
+                            <button id="submit" class="button btn btn-dark" type="submit">Add To My Quote List</button>
+                        </div>
+                </div>
+            </div>
+    </form>
+ 
+    <div class="table-responsive">
+
+            <table id="roster" class="table">
+                <thead>
+                    <th>MyQuote</th>
+                    <th>Quote Category</th>
+                    <th>Date</th>
+                </thead>
+                <tbody class="table-light" scope="row"></tbody>
+                <tbody>
+                    {% for s in name %}
+                    <tr>
+                        <td>{{ s[0] }}</td>
+                        <td>{{ s[1] }}</td>
+                        <td>{{ s[2] }}</td>
+                   
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div> 
+
+    <div class="row">
+            <div class="col"><a href="/remove">Remove Quotes</a></div>
+    </div>  
+     
+{% endblock %}

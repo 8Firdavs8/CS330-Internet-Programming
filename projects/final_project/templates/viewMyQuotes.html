@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h>
+   We Keep Track of Your Inspiration!
+</h>
+<style>
+
+    body {
+        align-items: center;
+        font-family: 'Redressed', cursive;
+    }
+    
+        h {
+            font-family: 'Redressed', cursive;
+    font-size: 200%;
+    font-weight: bold;
+    padding-top: 30px;
+        }
+    </style>
+        <table id="roster" class="table">
+                <thead>
+                    <th>MyQuote</th>
+                    <th>Quote Category</th>
+                    <th>Date</th>
+                </thead>
+                <tbody>
+                    {% for s in a %}
+                    <tr>
+                        <td>{{ s[0] }}</td>
+                        <td>{{ s[1] }}</td>
+                        <td>{{ s[2] }}</td>
+                    
+                    </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>  
+<p>
+    {{ removed }}
+</p> 
+
+{% endblock %}
